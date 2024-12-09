@@ -11,7 +11,7 @@ public:
 	};
 	// ID
 	short GetID() {
-		return _ID;
+		return _ID++;
 	}
 
 
@@ -59,13 +59,12 @@ public:
 	_declspec(property(get = GetPhone, put = SetPhone)) string Phone;
 
 	clsPersonInfo(string FirstName, string LastName, string Email, string Phone) {
-		_ID += 1;
 		SetFirstName(FirstName);
 		SetLastName(LastName);
 		SetEmail(Email);
 		SetPhone(Phone);
 		
-	}
+	} 
 	void Print() {
 		cout << "info : " << endl;
 		cout << "*****************************************";
