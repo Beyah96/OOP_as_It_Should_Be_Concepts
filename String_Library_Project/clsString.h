@@ -120,6 +120,77 @@ public:
 		return InvertAllLettersCase(this->_Value);
 	}
 	
+	enum enWhatToCount{ Capital , Small, All};
+
+	static short CountLetters(string Value, enWhatToCount WhatToCount = enWhatToCount::All) {
+		short Counter = 0;
+		for (char Letter : Value)
+			if (Letter != ' ')
+				Counter++;
+		return Counter;
+	}
+	
+	short CountLetters() {
+		return CountLetters(this->_Value);
+	}
+
+	static short CountCapitalLetters(string Value, enWhatToCount WhatToCount = enWhatToCount::Capital) {
+		short Counter = 0;
+		for (char Letter : Value)
+			if (Letter != ' ' && isupper(Letter))
+				Counter++;
+		return Counter;
+	}
+
+	short CountCapitalLetters() {
+		return CountCapitalLetters(this->_Value);
+	}
+
+	static short CountSmallLetters(string Value, enWhatToCount WhatToCount = enWhatToCount::Small) {
+		short Counter = 0;
+		for (char Letter : Value)
+			if (Letter != ' ' && islower(Letter))
+				Counter++;
+		return Counter;
+	}
+
+	short CountSmallLetters() {
+		return CountSmallLetters(this->_Value);
+	}
+
+	static short CountSpecificLetter(string Value, char SearchedLetter, bool MatchCase = true) {
+		short Counter = 0;
+		if (MatchCase = true){
+			for (char Letter : Value)
+				if (Letter == SearchedLetter)
+					Counter++;
+		}
+		else {
+			Value = LowerAllString(Value);
+			char LowerSearchedLetter = tolower(SearchedLetter);
+			for (char Letter : Value)
+				if (Letter = LowerSearchedLetter)
+					Counter++;
+		}
+		return Counter;
+	}
+
+	short CountSpecificLetter(char SerachedLetter, bool MatchCase) {
+		return CountSpecificLetter(this->_Value, SerachedLetter, MatchCase);
+	}
+
+	static bool isVowel(char Letter) {
+		Letter = tolower(Letter);
+		return (Letter == 'a' || Letter == 'e' || Letter == 'i' || Letter == 'u' || Letter == 'o');
+	}
+
+	static short CountVowels(string Value) {
+		short Counter = 0;
+		for (char Letter : Value)
+			if (isVowel(Letter))
+				Counter++;
+		return Counter;
+	}
 
 //upercase
 //lowercase

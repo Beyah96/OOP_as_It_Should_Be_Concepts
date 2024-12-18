@@ -10,20 +10,13 @@ int main() {
 }
 
 
-
-//CountLetters
-//CountSmallLetters
 //CountSpecificLetters
 //CountVowels
-//InvertAllLettersCase
-//InvertLetterCase
 //IsVowel
 //JoinString
-//LowerAllString
 //RemovePunctuation
 //ReplaceWord
 //ReverseWordsInString
-//SmallLetters
 //Split
 //Trim
 //TrimLeft
