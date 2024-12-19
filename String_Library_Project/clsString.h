@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <vector> 
 using namespace std;
 
 class clsString
@@ -192,8 +193,89 @@ public:
 		return Counter;
 	}
 
-//upercase
-//lowercase
+	short CountVowels() {
+		return CountVowels(this->_Value);
+	}
+
+	static vector <string> Split(string Value, string Delim) {
+		string sWord;
+		vector <string> vString;
+		short Pos = 0;
+		while ((Pos = Value.find(Delim)) != string::npos) {
+			sWord = Value.substr(0, Pos);
+			if (sWord != " ")
+				vString.push_back(sWord);
+			sWord.erase(0, Pos + Delim.length());
+		}
+		if (Value != "")
+			vString.push_back(Value);
+		return vString;
+	}
+
+	vector <string> Split(string Delim) {
+		return Split(this->_Value, Delim);
+	}
+
+	static string TrimLeft(string Value) {
+		for (short i = 0; i < Value.length(); i++)
+			if (Value[i] != ' ')
+				return Value.substr(i, Value.length() - i);
+		return "";
+	}
+
+	string TrimLeft() {
+		return TrimLeft(this->_Value);
+	}
+
+	static string TrimRight(string Value) {
+		for (int i = Value.length() - 1; i >= 0; i--)
+			if (Value[i] != ' ')
+				return Value.substr(0, i + 1);
+		return "";
+	}
+
+	string TrimRight() {
+		return TrimRight(this->_Value);
+	}
+
+	static string Trim(string Value) {
+		return TrimLeft(TrimRight(Value));
+	}
+
+	string Trim() {
+		return Trim(this->_Value);
+	}
+
+	static string JoinString(vector <string> vString, string Delim) {
+		string Text;
+		for (string sWord : vString)
+			if (sWord != " ")
+				Text += sWord + Delim;
+		return Text.substr(0, Text.length() - Delim.length());
+	}
+
+	static string JoinString(string arrString[], short Length, string Delim) {
+		string Text;
+		for (int i = 0; i < Length; i++)
+			if (arrString[i] != " ")
+				Text += arrString[i] + Delim;
+		return Text.substr(0, Text.length() - Delim.length());
+	}
+
+	static string ReverseWordsInString(string Value) {
+		vector <string> vString = Split(Value, " ");
+		string Text = "";
+		vector <string>::iterator iter = vString.end();
+		while (iter != vString.begin()){
+			Text += *iter + " ";
+			iter--;
+		}
+		return Text.substr(0, Text.length() - 1);
+	}
+
+	string ReverseWordsInString() {
+		return ReverseWordsInString(this->_Value);
+	}
 //split function
 //capitalLettes
 //countcapitalletters
