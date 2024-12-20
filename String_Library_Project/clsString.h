@@ -197,7 +197,7 @@ public:
 		return CountVowels(this->_Value);
 	}
 
-	static vector <string> Split(string Value, string Delim) {
+	static vector <string> Split(string Value, string Delim = " ") {
 		string sWord;
 		vector <string> vString;
 		short Pos = 0;
@@ -205,14 +205,15 @@ public:
 			sWord = Value.substr(0, Pos);
 			if (sWord != " ")
 				vString.push_back(sWord);
-			sWord.erase(0, Pos + Delim.length());
+			Value.erase(0, Pos + Delim.length());
 		}
 		if (Value != "")
 			vString.push_back(Value);
 		return vString;
 	}
 
-	vector <string> Split(string Delim) {
+
+	vector <string> Split(string Delim = " ") {
 		return Split(this->_Value, Delim);
 	}
 
@@ -246,7 +247,7 @@ public:
 		return Trim(this->_Value);
 	}
 
-	static string JoinString(vector <string> vString, string Delim) {
+	static string JoinString(vector <string> vString, string Delim = " ") {
 		string Text;
 		for (string sWord : vString)
 			if (sWord != " ")
@@ -254,7 +255,7 @@ public:
 		return Text.substr(0, Text.length() - Delim.length());
 	}
 
-	static string JoinString(string arrString[], short Length, string Delim) {
+	static string JoinString(string arrString[], short Length, string Delim = " ") {
 		string Text;
 		for (int i = 0; i < Length; i++)
 			if (arrString[i] != " ")
@@ -267,8 +268,8 @@ public:
 		string Text = "";
 		vector <string>::iterator iter = vString.end();
 		while (iter != vString.begin()){
-			Text += *iter + " ";
 			iter--;
+			Text += *iter + " ";
 		}
 		return Text.substr(0, Text.length() - 1);
 	}
@@ -276,9 +277,35 @@ public:
 	string ReverseWordsInString() {
 		return ReverseWordsInString(this->_Value);
 	}
-//split function
-//capitalLettes
-//countcapitalletters
 
+	static string ReplaceWord(string Value, string sWordToReplace, string sWordReplaced) {
+		vector <string> vString;
+		vString = Split(Value, " ");
+		Value = "";
+		for (string& sWord : vString)
+			if (sWord == sWordToReplace){
+				sWord = sWordReplaced;
+			}
+		for (string& sWord : vString)
+			Value += sWord + " ";
+		return Value.substr(0, Value.length() - 1);
+	}
+
+	string ReplaceWord(string sWordToReplace, string sWordReplaced) {
+		return ReplaceWord(this->_Value, sWordToReplace, sWordReplaced);
+	}
+
+	static string RemovePunctuation(string Value) {
+		string StringLine;
+		for (int i = 0; i < Value.length(); i++) {
+			if (!ispunct(Value[i]))
+				StringLine += Value[i];
+		}
+		return StringLine;
+	}
+
+	string RemovePunctuation() {
+		return RemovePunctuation(this->_Value);
+	}
 };
 

@@ -5,11 +5,8 @@ using namespace std;
 
 int main() {
 	clsString String1;
-	vector <string> vString;
-	cout << "Start : " << endl;
-	vString = clsString::Split("Mohamed Said Beyah", " ");
-	for (string sWord : vString) cout << sWord << endl;
-	cout << "End !!";
+	String1.Value = "Mohame?d Said!; Beya,h";
+	cout << String1.RemovePunctuation();
 	system("pause>0");
 	return 0;
 }
