@@ -4,7 +4,7 @@
 using namespace std;
 
 int main() {
-	clsDate Date;
+	clsDate Date(25,10,2011);
 	Date.Print();
 	system("pause>0");
 	return 0;

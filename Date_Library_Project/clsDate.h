@@ -17,6 +17,15 @@ public:
 		this->_Month = now->tm_mon;
 		this->_Year = now->tm_year + 1900;
 	}
+
+
+	clsDate(short Day, short Month, short Year) {
+		this->_Day = Day;
+		this->_Month= Month;
+		this->_Year = Year;
+	}
+
+
 	void Print() {
 		cout << "Day   : " << _Day << endl;
 		cout << "Month : " << _Month << endl;
