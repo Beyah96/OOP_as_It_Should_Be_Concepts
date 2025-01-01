@@ -1,6 +1,8 @@
 #pragma once
 #include <iostream>
 #include <ctime>
+#include "clsString.h"
+#include <string>
 
 using namespace std;
 class clsDate
@@ -25,11 +27,31 @@ public:
 		this->_Year = Year;
 	}
 
+	clsDate(string Date) {
+		vector <string> vString = clsString::Split(Date, "/");
+		this->_Day = stoi(vString[0]);
+		this->_Month = stoi(vString[1]);
+		this->_Year = stoi(vString[2]);
+	}
+
+	clsDate(short DayOrderInYear, short Year) {
+		clsDate Date = GetDateFromDayOrderInYear(DayOrderInYear, Year);
+		this->_Day = Date._Day;
+		this->_Month = Date._Month;
+		this->_Year = Date._Year;
+	}
 
 	void Print() {
 		cout << "Day   : " << _Day << endl;
 		cout << "Month : " << _Month << endl;
 		cout << "Year  : " << _Year << endl;
 	}
+	
+	clsDate GetDateFromDayOrderInYear(short DayOrderInYear, short Year) {
+		clsDate Date;
+
+		return Date;
+	}
+	
 };
 
