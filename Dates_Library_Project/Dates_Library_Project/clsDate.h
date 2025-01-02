@@ -52,6 +52,48 @@ public:
 
 		return Date;
 	}
+
+	void setDay(short Day) {
+		_Day = Day;
+	}
+	
+	short getDay() {
+		return _Day;
+	}
+
+	__declspec(property(get = getDay, put = setDay)) short Day;
+
+	void setMonth(short Month) {
+		_Month = Month;
+	}
+
+	short getMonth() {
+		return _Month;
+	}
+
+	__declspec(property(get = getMonth, put = setMonth)) short Month;
+
+	void setYear(short Year) {
+		_Year = Year;
+	}
+
+	short getYear() {
+		return _Year;
+	}
+
+	__declspec(property(get = getYear, put = setYear)) short Year;
+
+	void Print() {
+		cout << DateToString() << endl;
+	}
+
+	string DateToString() {
+		return DateToString(*this);
+	}
+
+	static string DateToString(clsDate Date) {
+		return to_string(Date._Day) + "/" + to_string(Date._Month) + "/" + to_string(Date._Year);
+	}
+	
 	
 };
-
