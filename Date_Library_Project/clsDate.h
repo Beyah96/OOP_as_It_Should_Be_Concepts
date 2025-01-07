@@ -1085,5 +1085,24 @@ public:
 		return IsDate1AfterDate2(*this, Date2);
 	}
 
+	enum enDateCompare { Before = -1, Equal = 0, After = 1 };
+
+	static enDateCompare CompareDates(clsDate Date1, clsDate Date2)
+	{
+		if (IsDate1BeforeDate2(Date1, Date2))
+			return enDateCompare::Before;
+
+		if (IsDate1EqualDate2(Date1, Date2))
+			return enDateCompare::Equal;
+
+		return enDateCompare::After;
+
+	}
+
+	enDateCompare CompareDates(clsDate Date2)
+	{
+		return CompareDates(*this, Date2);
+	}
+
 };
 
