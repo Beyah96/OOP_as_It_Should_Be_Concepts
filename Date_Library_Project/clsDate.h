@@ -1015,5 +1015,22 @@ public:
 		return DaysUntilTheEndOfMonth(*this);
 	}
 
+	static short DaysUntilTheEndOfYear(clsDate Date1)
+	{
+
+		clsDate EndOfYearDate;
+		EndOfYearDate.Day = 31;
+		EndOfYearDate.Month = 12;
+		EndOfYearDate.Year = Date1.Year;
+
+		return GetDifferenceInDays(Date1, EndOfYearDate, true);
+
+	}
+
+	short DaysUntilTheEndOfYear()
+	{
+		return  DaysUntilTheEndOfYear(*this);
+	}
+
 };
 
