@@ -896,5 +896,17 @@ public:
 		DecreaseDateByOneYear(*this);
 	}
 
+	static clsDate DecreaseDateByXYears(short Years, clsDate& Date)
+	{
+
+		Date.Year -= Years;
+		return Date;
+	}
+
+	void DecreaseDateByXYears(short Years)
+	{
+		DecreaseDateByXYears(Years, *this);
+	}
+
 };
 
