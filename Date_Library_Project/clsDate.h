@@ -593,5 +593,11 @@ public:
 		return GetDifferenceInDays(*this, Date2, IncludeEndDay);
 	}
 
+	static short CalculateMyAgeInDays(clsDate DateOfBirth)
+	{
+		return GetDifferenceInDays(DateOfBirth, clsDate::GetSystemDate(), true);
+	}
+	//above no need to have nonstatic function for the object because it does not depend on any data from it.
+
 };
 
