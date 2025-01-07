@@ -932,5 +932,16 @@ public:
 		DecreaseDateByXDecades(Decades, *this);
 	}
 
+	static clsDate DecreaseDateByOneCentury(clsDate& Date)
+	{
+		Date.Year -= 100;
+		return Date;
+	}
+
+	void DecreaseDateByOneCentury()
+	{
+		DecreaseDateByOneCentury(*this);
+	}
+
 };
 
