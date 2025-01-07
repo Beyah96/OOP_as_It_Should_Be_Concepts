@@ -209,5 +209,21 @@ public:
 		return  NumberOfSecondsInAYear();
 	}
 
+	static short NumberOfDaysInAMonth(short Month, short Year)
+	{
+
+		if (Month < 1 || Month>12)
+			return  0;
+
+		int days[12] = { 31,28,31,30,31,30,31,31,30,31,30,31 };
+		return (Month == 2) ? (isLeapYear(Year) ? 29 : 28) : days[Month - 1];
+
+	}
+
+	short NumberOfDaysInAMonth()
+	{
+		return NumberOfDaysInAMonth(_Month, _Year);
+	}
+
 };
 
