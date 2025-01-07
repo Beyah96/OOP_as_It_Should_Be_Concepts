@@ -235,5 +235,16 @@ public:
 		return  NumberOfDaysInAMonth(_Month, _Year) * 24;
 	}
 
+	static int NumberOfMinutesInAMonth(short Month, short Year)
+	{
+		return  NumberOfHoursInAMonth(Month, Year) * 60;
+	}
+
+	int NumberOfMinutesInAMonth()
+	{
+		return  NumberOfHoursInAMonth(_Month, _Year) * 60;
+	}
+
+
 };
 
