@@ -525,5 +525,35 @@ public:
 		return (Month == 12);
 	}
 
+	static clsDate AddOneDay(clsDate Date)
+	{
+		if (IsLastDayInMonth(Date))
+		{
+			if (IsLastMonthInYear(Date.Month))
+			{
+				Date.Month = 1;
+				Date.Day = 1;
+				Date.Year++;
+			}
+			else
+			{
+				Date.Day = 1;
+				Date.Month++;
+			}
+		}
+		else
+		{
+			Date.Day++;
+		}
+
+		return Date;
+	}
+
+	void AddOneDay()
+
+	{
+		*this = AddOneDay(*this);
+	}
+
 };
 
