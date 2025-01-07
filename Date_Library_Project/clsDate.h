@@ -1051,7 +1051,7 @@ public:
 
 	static short CalculateVacationDays(clsDate DateFrom, clsDate DateTo)
 	{
-		return CalculateBusinessDays(DateFrom, DateTo);
+		return CalculateBusinessDays(DateFrom, DateTo)
 	}
 
 	static clsDate CalculateVacationReturnDate(clsDate DateFrom, short VacationDays)
@@ -1072,6 +1072,17 @@ public:
 			DateFrom = AddOneDay(DateFrom);
 
 		return DateFrom;
+	}
+
+	static bool IsDate1AfterDate2(clsDate Date1, clsDate Date2)
+	{
+		return (!IsDate1BeforeDate2(Date1, Date2) && !IsDate1EqualDate2(Date1, Date2));
+
+	}
+
+	bool IsDateAfterDate2(clsDate Date2)
+	{
+		return IsDate1AfterDate2(*this, Date2);
 	}
 
 };
