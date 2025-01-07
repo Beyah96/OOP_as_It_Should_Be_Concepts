@@ -739,5 +739,17 @@ public:
 		IncreaseDateByXDecades(Decade, *this);
 	}
 
+	clsDate IncreaseDateByOneCentury(clsDate& Date)
+	{
+		//Period of 100 years
+		Date.Year += 100;
+		return Date;
+	}
+
+	void IncreaseDateByOneCentury()
+	{
+		IncreaseDateByOneCentury(*this);
+	}
+
 };
 
