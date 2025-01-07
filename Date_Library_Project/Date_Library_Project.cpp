@@ -4,8 +4,8 @@
 using namespace std;
 
 int main() {
-	clsDate Date(25,10,2011);
-	clsDate DateTwo();
+	clsDate Date(25, 10, 2011);
+	clsDate DateTwo;
 	DateTwo.Print();
 	Date.Print();
 	system("pause>0");
