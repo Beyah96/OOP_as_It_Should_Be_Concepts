@@ -513,5 +513,17 @@ public:
 
 	}
 
+	bool IsLastDayInMonth()
+	{
+
+		return IsLastDayInMonth(*this);
+
+	}
+
+	static bool IsLastMonthInYear(short Month)
+	{
+		return (Month == 12);
+	}
+
 };
 
