@@ -943,5 +943,17 @@ public:
 		DecreaseDateByOneCentury(*this);
 	}
 
+	static clsDate DecreaseDateByOneMillennium(clsDate& Date)
+	{
+		//Period of 1000 years
+		Date.Year -= 1000;
+		return Date;
+	}
+
+	void DecreaseDateByOneMillennium()
+	{
+		DecreaseDateByOneMillennium(*this);
+	}
+
 };
 
