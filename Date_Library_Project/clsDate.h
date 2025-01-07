@@ -615,5 +615,20 @@ public:
 		IncreaseDateByOneWeek(*this);
 	}
 
+	clsDate IncreaseDateByXWeeks(short Weeks, clsDate& Date)
+	{
+
+		for (short i = 1; i <= Weeks; i++)
+		{
+			Date = IncreaseDateByOneWeek(Date);
+		}
+		return Date;
+	}
+
+	void IncreaseDateByXWeeks(short Weeks)
+	{
+		IncreaseDateByXWeeks(Weeks, *this);
+	}
+
 };
 
