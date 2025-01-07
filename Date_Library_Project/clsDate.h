@@ -716,5 +716,17 @@ public:
 		IncreaseDateByXYears(Years);
 	}
 
+	clsDate IncreaseDateByOneDecade(clsDate& Date)
+	{
+		//Period of 10 years
+		Date.Year += 10;
+		return Date;
+	}
+
+	void IncreaseDateByOneDecade()
+	{
+		IncreaseDateByOneDecade(*this);
+	}
+
 };
 
