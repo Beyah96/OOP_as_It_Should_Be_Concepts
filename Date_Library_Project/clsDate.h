@@ -496,5 +496,15 @@ public:
 
 	}
 
+	static bool IsDate1EqualDate2(clsDate Date1, clsDate Date2)
+	{
+		return  (Date1.Year == Date2.Year) ? ((Date1.Month == Date2.Month) ? ((Date1.Day == Date2.Day) ? true : false) : false) : false;
+	}
+
+	bool IsDateEqualDate2(clsDate Date2)
+	{
+		return  IsDate1EqualDate2(*this, Date2);
+	}
+
 };
 
