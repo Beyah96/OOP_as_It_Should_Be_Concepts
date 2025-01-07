@@ -966,5 +966,16 @@ public:
 		return IsEndOfWeek(*this);
 	}
 
+	static bool IsWeekEnd(clsDate Date)
+	{
+		short DayIndex = DayOfWeekOrder(Date.Day, Date.Month, Date.Year);
+		return  (DayIndex == 5 || DayIndex == 6);
+	}
+
+	bool IsWeekEnd()
+	{
+		return  IsWeekEnd(*this);
+	}
+
 };
 
