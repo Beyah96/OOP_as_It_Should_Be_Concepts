@@ -1049,5 +1049,10 @@ public:
 
 	}
 
+	static short CalculateVacationDays(clsDate DateFrom, clsDate DateTo)
+	{
+		return CalculateBusinessDays(DateFrom, DateTo);
+	}
+
 };
 
