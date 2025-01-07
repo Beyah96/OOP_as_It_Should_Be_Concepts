@@ -564,5 +564,34 @@ public:
 		Date2 = TempDate;
 
 	}
+
+	static int GetDifferenceInDays(clsDate Date1, clsDate Date2, bool IncludeEndDay = false)
+	{
+		//this will take care of negative diff
+		int Days = 0;
+		short SawpFlagValue = 1;
+
+		if (!IsDate1BeforeDate2(Date1, Date2))
+		{
+			//Swap Dates 
+			SwapDates(Date1, Date2);
+			SawpFlagValue = -1;
+
+		}
+
+		while (IsDate1BeforeDate2(Date1, Date2))
+		{
+			Days++;
+			Date1 = AddOneDay(Date1);
+		}
+
+		return IncludeEndDay ? ++Days * SawpFlagValue : Days * SawpFlagValue;
+	}
+
+	int GetDifferenceInDays(clsDate Date2, bool IncludeEndDay = false)
+	{
+		return GetDifferenceInDays(*this, Date2, IncludeEndDay);
+	}
+
 };
 
