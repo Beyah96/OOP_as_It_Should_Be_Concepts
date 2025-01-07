@@ -296,5 +296,24 @@ public:
 		return arrDayNames[DayOfWeekOrder(_Day, _Month, _Year)];
 
 	}
+
+	static string MonthShortName(short MonthNumber)
+	{
+		string Months[12] = { "Jan", "Feb", "Mar",
+						   "Apr", "May", "Jun",
+						   "Jul", "Aug", "Sep",
+						   "Oct", "Nov", "Dec"
+		};
+
+		return (Months[MonthNumber - 1]);
+	}
+
+	string MonthShortName()
+	{
+
+		return MonthShortName(_Month);
+	}
+
+	
 };
 
