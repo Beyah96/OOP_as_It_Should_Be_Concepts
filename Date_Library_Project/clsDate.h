@@ -103,4 +103,24 @@ public:
 		return clsDate(Day, Month, Year);
 	}
 
+
+	static bool isLeapYear(clsDate Date) {
+		return (Date.Year % 4 == 0 && Date.Year % 100 != 0 || Date.Year % 400 == 0) ? true : false;
+	}
+
+	bool isLeapYear() {
+		return isLeapYear(*this);
+	}
+	static bool isValidDate(clsDate Date) {
+		if ((Date.Year < 0) || (Date.Month > 12 || Date.Month < 1) || (Date.Day < 1 || Date.Day > 31))
+			return false;
+		if (Date.Month == 2)
+			return (isLeapYear(Date) && Date.Day != 29) ? false : (!isLeapYear(Date) && Date.Day != 28) ? false : true;
+	}
+
+	bool isValidDate() {
+		return isValidDate(*this);
+	}
+
+
 };
