@@ -386,5 +386,37 @@ public:
 		return;
 	}
 
+	static short DaysFromTheBeginingOfTheYear(short Day, short Month, short Year)
+	{
+
+
+		short TotalDays = 0;
+
+		for (int i = 1; i <= Month - 1; i++)
+		{
+			TotalDays += NumberOfDaysInAMonth(i, Year);
+		}
+
+		TotalDays += Day;
+
+		return TotalDays;
+	}
+
+	short DaysFromTheBeginingOfTheYear()
+	{
+
+
+		short TotalDays = 0;
+
+		for (int i = 1; i <= _Month - 1; i++)
+		{
+			TotalDays += NumberOfDaysInAMonth(i, _Year);
+		}
+
+		TotalDays += _Day;
+
+		return TotalDays;
+	}
+
 };
 
