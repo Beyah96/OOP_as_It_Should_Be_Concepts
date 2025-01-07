@@ -1032,5 +1032,22 @@ public:
 		return  DaysUntilTheEndOfYear(*this);
 	}
 
+	//i added this method to calculate business days between 2 days
+	static short CalculateBusinessDays(clsDate DateFrom, clsDate DateTo)
+	{
+
+		short Days = 0;
+		while (IsDate1BeforeDate2(DateFrom, DateTo))
+		{
+			if (IsBusinessDay(DateFrom))
+				Days++;
+
+			DateFrom = AddOneDay(DateFrom);
+		}
+
+		return Days;
+
+	}
+
 };
 
