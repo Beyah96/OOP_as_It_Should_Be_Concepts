@@ -920,5 +920,17 @@ public:
 		DecreaseDateByOneDecade(*this);
 	}
 
+	static clsDate DecreaseDateByXDecades(short Decades, clsDate& Date)
+	{
+
+		Date.Year -= Decades * 10;
+		return Date;
+	}
+
+	void DecreaseDateByXDecades(short Decades)
+	{
+		DecreaseDateByXDecades(Decades, *this);
+	}
+
 };
 
