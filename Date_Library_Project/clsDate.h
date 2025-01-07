@@ -225,5 +225,15 @@ public:
 		return NumberOfDaysInAMonth(_Month, _Year);
 	}
 
+	static short NumberOfHoursInAMonth(short Month, short Year)
+	{
+		return  NumberOfDaysInAMonth(Month, Year) * 24;
+	}
+
+	short NumberOfHoursInAMonth()
+	{
+		return  NumberOfDaysInAMonth(_Month, _Year) * 24;
+	}
+
 };
 
