@@ -704,5 +704,17 @@ public:
 		IncreaseDateByOneYear(*this);
 	}
 
+	clsDate IncreaseDateByXYears(short Years, clsDate& Date)
+	{
+		Date.Year += Years;
+		return Date;
+
+	}
+
+	void IncreaseDateByXYears(short Years)
+	{
+		IncreaseDateByXYears(Years);
+	}
+
 };
 
