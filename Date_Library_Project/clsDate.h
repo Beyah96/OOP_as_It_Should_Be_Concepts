@@ -678,5 +678,20 @@ public:
 		IncreaseDateByXDays(Days, *this);
 	}
 
+	clsDate IncreaseDateByXMonths(short Months, clsDate& Date)
+	{
+
+		for (short i = 1; i <= Months; i++)
+		{
+			Date = IncreaseDateByOneMonth(Date);
+		}
+		return Date;
+	}
+
+	void IncreaseDateByXMonths(short Months)
+	{
+		IncreaseDateByXMonths(Months, *this);
+	}
+
 };
 
