@@ -908,5 +908,17 @@ public:
 		DecreaseDateByXYears(Years, *this);
 	}
 
+	static clsDate DecreaseDateByOneDecade(clsDate& Date)
+	{
+		//Period of 10 years
+		Date.Year -= 10;
+		return Date;
+	}
+
+	void DecreaseDateByOneDecade()
+	{
+		DecreaseDateByOneDecade(*this);
+	}
+
 };
 
