@@ -998,5 +998,22 @@ public:
 		return  DaysUntilTheEndOfWeek(*this);
 	}
 
+	static short DaysUntilTheEndOfMonth(clsDate Date1)
+	{
+
+		clsDate EndOfMontDate;
+		EndOfMontDate.Day = NumberOfDaysInAMonth(Date1.Month, Date1.Year);
+		EndOfMontDate.Month = Date1.Month;
+		EndOfMontDate.Year = Date1.Year;
+
+		return GetDifferenceInDays(Date1, EndOfMontDate, true);
+
+	}
+
+	short DaysUntilTheEndOfMonth()
+	{
+		return DaysUntilTheEndOfMonth(*this);
+	}
+
 };
 
