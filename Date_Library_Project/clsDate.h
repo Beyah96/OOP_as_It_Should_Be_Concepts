@@ -314,6 +314,47 @@ public:
 		return MonthShortName(_Month);
 	}
 
-	
+	static void PrintMonthCalendar(short Month, short Year)
+	{
+		int NumberOfDays;
+
+		// Index of the day from 0 to 6
+		int current = DayOfWeekOrder(1, Month, Year);
+
+		NumberOfDays = NumberOfDaysInAMonth(Month, Year);
+
+		// Print the current month name
+		printf("\n  _______________%s_______________\n\n",
+			MonthShortName(Month).c_str());
+
+		// Print the columns
+		printf("  Sun  Mon  Tue  Wed  Thu  Fri  Sat\n");
+
+		// Print appropriate spaces
+		int i;
+		for (i = 0; i < current; i++)
+			printf("     ");
+
+		for (int j = 1; j <= NumberOfDays; j++)
+		{
+			printf("%5d", j);
+
+
+			if (++i == 7)
+			{
+				i = 0;
+				printf("\n");
+			}
+		}
+
+		printf("\n  _________________________________\n");
+
+	}
+
+	void PrintMonthCalendar()
+	{
+		PrintMonthCalendar(_Month, _Year);
+	}
+
 };
 
