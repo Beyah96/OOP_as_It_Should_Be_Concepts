@@ -693,5 +693,16 @@ public:
 		IncreaseDateByXMonths(Months, *this);
 	}
 
+	static clsDate IncreaseDateByOneYear(clsDate& Date)
+	{
+		Date.Year++;
+		return Date;
+	}
+
+	void IncreaseDateByOneYear()
+	{
+		IncreaseDateByOneYear(*this);
+	}
+
 };
 
