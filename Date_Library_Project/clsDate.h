@@ -484,5 +484,17 @@ public:
 
 	}
 
+	static bool IsDate1BeforeDate2(clsDate Date1, clsDate Date2)
+	{
+		return  (Date1.Year < Date2.Year) ? true : ((Date1.Year == Date2.Year) ? (Date1.Month < Date2.Month ? true : (Date1.Month == Date2.Month ? Date1.Day < Date2.Day : false)) : false);
+	}
+
+	bool IsDateBeforeDate2(clsDate Date2)
+	{
+		//note: *this sends the current object :-) 
+		return  IsDate1BeforeDate2(*this, Date2);
+
+	}
+
 };
 
