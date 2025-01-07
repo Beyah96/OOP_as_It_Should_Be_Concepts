@@ -271,5 +271,30 @@ public:
 		return DayOfWeekOrder(_Day, _Month, _Year);
 	}
 
+	static string DayShortName(short DayOfWeekOrder)
+	{
+		string arrDayNames[] = { "Sun","Mon","Tue","Wed","Thu","Fri","Sat" };
+
+		return arrDayNames[DayOfWeekOrder];
+
+	}
+
+	static string DayShortName(short Day, short Month, short Year)
+	{
+
+		string arrDayNames[] = { "Sun","Mon","Tue","Wed","Thu","Fri","Sat" };
+
+		return arrDayNames[DayOfWeekOrder(Day, Month, Year)];
+
+	}
+
+	string DayShortName()
+	{
+
+		string arrDayNames[] = { "Sun","Mon","Tue","Wed","Thu","Fri","Sat" };
+
+		return arrDayNames[DayOfWeekOrder(_Day, _Month, _Year)];
+
+	}
 };
 
