@@ -662,5 +662,21 @@ public:
 
 	}
 
+	clsDate IncreaseDateByXDays(short Days, clsDate& Date)
+	{
+
+		for (short i = 1; i <= Days; i++)
+		{
+			Date = AddOneDay(Date);
+		}
+		return Date;
+	}
+
+	void IncreaseDateByXDays(short Days)
+	{
+
+		IncreaseDateByXDays(Days, *this);
+	}
+
 };
 
