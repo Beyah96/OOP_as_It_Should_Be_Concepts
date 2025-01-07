@@ -955,5 +955,16 @@ public:
 		DecreaseDateByOneMillennium(*this);
 	}
 
+
+	static short IsEndOfWeek(clsDate Date)
+	{
+		return  DayOfWeekOrder(Date.Day, Date.Month, Date.Year) == 6;
+	}
+
+	short IsEndOfWeek()
+	{
+		return IsEndOfWeek(*this);
+	}
+
 };
 
