@@ -988,5 +988,15 @@ public:
 		return  IsBusinessDay(*this);
 	}
 
+	static short DaysUntilTheEndOfWeek(clsDate Date)
+	{
+		return 6 - DayOfWeekOrder(Date.Day, Date.Month, Date.Year);
+	}
+
+	short DaysUntilTheEndOfWeek()
+	{
+		return  DaysUntilTheEndOfWeek(*this);
+	}
+
 };
 
