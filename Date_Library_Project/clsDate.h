@@ -599,5 +599,21 @@ public:
 	}
 	//above no need to have nonstatic function for the object because it does not depend on any data from it.
 
+	static clsDate IncreaseDateByOneWeek(clsDate& Date)
+	{
+
+		for (int i = 1; i <= 7; i++)
+		{
+			Date = AddOneDay(Date);
+		}
+
+		return Date;
+	}
+
+	void IncreaseDateByOneWeek()
+	{
+		IncreaseDateByOneWeek(*this);
+	}
+
 };
 
