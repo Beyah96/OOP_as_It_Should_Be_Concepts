@@ -555,5 +555,14 @@ public:
 		*this = AddOneDay(*this);
 	}
 
+	static void  SwapDates(clsDate& Date1, clsDate& Date2)
+	{
+
+		clsDate TempDate;
+		TempDate = Date1;
+		Date1 = Date2;
+		Date2 = TempDate;
+
+	}
 };
 
