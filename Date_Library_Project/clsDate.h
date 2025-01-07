@@ -418,5 +418,35 @@ public:
 		return TotalDays;
 	}
 
+	static clsDate GetDateFromDayOrderInYear(short DateOrderInYear, short Year)
+	{
+
+		clsDate Date;
+		short RemainingDays = DateOrderInYear;
+		short MonthDays = 0;
+
+		Date.Year = Year;
+		Date.Month = 1;
+
+		while (true)
+		{
+			MonthDays = NumberOfDaysInAMonth(Date.Month, Year);
+
+			if (RemainingDays > MonthDays)
+			{
+				RemainingDays -= MonthDays;
+				Date.Month++;
+			}
+			else
+			{
+				Date.Day = RemainingDays;
+				break;
+			}
+
+		}
+
+		return Date;
+	}
+
 };
 
