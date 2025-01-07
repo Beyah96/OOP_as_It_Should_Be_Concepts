@@ -977,5 +977,16 @@ public:
 		return  IsWeekEnd(*this);
 	}
 
+	static bool IsBusinessDay(clsDate Date)
+	{
+		return !IsWeekEnd(Date);
+
+	}
+
+	bool IsBusinessDay()
+	{
+		return  IsBusinessDay(*this);
+	}
+
 };
 
