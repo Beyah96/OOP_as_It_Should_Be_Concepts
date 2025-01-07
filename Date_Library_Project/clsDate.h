@@ -763,5 +763,35 @@ public:
 		IncreaseDateByOneMillennium(*this);
 	}
 
+	static clsDate DecreaseDateByOneDay(clsDate Date)
+	{
+		if (Date.Day == 1)
+		{
+			if (Date.Month == 1)
+			{
+				Date.Month = 12;
+				Date.Day = 31;
+				Date.Year--;
+			}
+			else
+			{
+
+				Date.Month--;
+				Date.Day = NumberOfDaysInAMonth(Date.Month, Date.Year);
+			}
+		}
+		else
+		{
+			Date.Day--;
+		}
+
+		return Date;
+	}
+
+	void DecreaseDateByOneDay()
+	{
+		DecreaseDateByOneDay(*this);
+	}
+
 };
 
