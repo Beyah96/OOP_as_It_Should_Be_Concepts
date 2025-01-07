@@ -809,5 +809,20 @@ public:
 		DecreaseDateByOneWeek(*this);
 	}
 
+	static clsDate DecreaseDateByXWeeks(short Weeks, clsDate& Date)
+	{
+
+		for (short i = 1; i <= Weeks; i++)
+		{
+			Date = DecreaseDateByOneWeek(Date);
+		}
+		return Date;
+	}
+
+	void DecreaseDateByXWeeks(short Weeks)
+	{
+		DecreaseDateByXWeeks(Weeks, *this);
+	}
+
 };
 
