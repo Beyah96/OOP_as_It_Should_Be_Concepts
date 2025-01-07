@@ -506,5 +506,12 @@ public:
 		return  IsDate1EqualDate2(*this, Date2);
 	}
 
+	static bool IsLastDayInMonth(clsDate Date)
+	{
+
+		return (Date.Day == NumberOfDaysInAMonth(Date.Month, Date.Year));
+
+	}
+
 };
 
