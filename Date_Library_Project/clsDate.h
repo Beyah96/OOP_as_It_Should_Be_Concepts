@@ -884,5 +884,17 @@ public:
 		DecreaseDateByXMonths(Months, *this);
 	}
 
+	static clsDate DecreaseDateByOneYear(clsDate& Date)
+	{
+
+		Date.Year--;
+		return Date;
+	}
+
+	void DecreaseDateByOneYear()
+	{
+		DecreaseDateByOneYear(*this);
+	}
+
 };
 
