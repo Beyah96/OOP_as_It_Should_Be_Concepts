@@ -4,11 +4,8 @@
 using namespace std;
 
 int main() {
-	clsDate Date(125, 10, 2011);
-	clsDate DateTwo;
-	//DateTwo.Print();
-	//Date.Print();
-	cout << Date.isValidDate();
+	clsDate Date(25, 10, 2012);
+	cout << Date.GetNumberOfDaysInAYear();
 	system("pause>0");
 	return 0;
 }

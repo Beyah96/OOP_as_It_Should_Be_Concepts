@@ -1,126 +1,213 @@
+
+//ProgrammingAdivces.com
+//Mohammed Abu-Hadhoud
+#pragma warning(disable : 4996)
 #pragma once
-#include <iostream>
-#include <ctime>
+
+#include<iostream>
+#include<string>
 #include "clsString.h"
-#include <string>
 
 using namespace std;
+
 class clsDate
 {
+
 private:
-	short _Day;
-	short _Month;
-	short _Year;
+
+	short _Day = 1;
+	short _Month = 1;
+	short _Year = 1900;
+
 public:
-	clsDate() {
-		time_t t = time(NULL);
+
+	clsDate()
+	{
+		time_t t = time(0);
 		tm* now = localtime(&t);
-		this->_Day = now->tm_mday;
-		this->_Month = now->tm_mon;
-		this->_Year = now->tm_year + 1900;
+		_Day = now->tm_mday;
+		_Month = now->tm_mon + 1;
+		_Year = now->tm_year + 1900;
 	}
 
+	clsDate(string sDate)
+	{
 
-	clsDate(short Day, short Month, short Year) {
-		this->_Day = Day;
-		this->_Month = Month;
-		this->_Year = Year;
+		vector <string> vDate;
+		vDate = clsString::Split(sDate, "/");
+
+		_Day = stoi(vDate[0]);
+		_Month = stoi(vDate[1]);
+		_Year = stoi(vDate[2]);
+
 	}
 
-	clsDate(string Date) {
-		vector <string> vString = clsString::Split(Date, "/");
-		this->_Day = stoi(vString[0]);
-		this->_Month = stoi(vString[1]);
-		this->_Year = stoi(vString[2]);
+	clsDate(short Day, short Month, short Year)
+	{
+
+		_Day = Day;
+		_Month = Month;
+		_Year = Year;
+
 	}
 
-	clsDate(short DayOrderInYear, short Year) {
-		clsDate Date = GetDateFromDayOrderInYear(DayOrderInYear, Year);
-		this->_Day = Date._Day;
-		this->_Month = Date._Month;
-		this->_Year = Date._Year;
+	clsDate(short DateOrderInYear, short Year)
+	{
+		//This will construct a date by date order in year
+		clsDate Date1 = GetDateFromDayOrderInYear(DateOrderInYear, Year);
+		_Day = Date1.Day;
+		_Month = Date1.Month;
+		_Year = Date1.Year;
 	}
 
-
-
-	clsDate GetDateFromDayOrderInYear(short DayOrderInYear, short Year) {
-		clsDate Date;
-
-		return Date;
-	}
-
-	void setDay(short Day) {
+	void SetDay(short Day) {
 		_Day = Day;
 	}
 
-	short getDay() {
+	short GetDay() {
 		return _Day;
 	}
+	__declspec(property(get = GetDay, put = SetDay)) short Day;
 
-	__declspec(property(get = getDay, put = setDay)) short Day;
-
-	void setMonth(short Month) {
+	void SetMonth(short Month) {
 		_Month = Month;
 	}
 
-	short getMonth() {
+	short GetMonth() {
 		return _Month;
 	}
+	__declspec(property(get = GetMonth, put = SetMonth)) short Month;
 
-	__declspec(property(get = getMonth, put = setMonth)) short Month;
 
-	void setYear(short Year) {
+	void SetYear(short Year) {
 		_Year = Year;
 	}
 
-	short getYear() {
+	short GetYear() {
 		return _Year;
 	}
+	__declspec(property(get = GetYear, put = SetYear)) short Year;
 
-	__declspec(property(get = getYear, put = setYear)) short Year;
-
-	void Print() {
+	void Print()
+	{
 		cout << DateToString() << endl;
 	}
 
-	string DateToString() {
-		return DateToString(*this);
-	}
-
-	static string DateToString(clsDate Date) {
-		return to_string(Date._Day) + "/" + to_string(Date._Month) + "/" + to_string(Date._Year);
-	}
-
-	static clsDate GetSystemDate() {
+	static clsDate GetSystemDate()
+	{
+		//system date
 		time_t t = time(0);
-		tm* Now = localtime(&t);
+		tm* now = localtime(&t);
 
 		short Day, Month, Year;
-		Day = Now->tm_mday;
-		Month = Now->tm_mon + 1;
-		Year = Now->tm_year + 1900;
+
+		Year = now->tm_year + 1900;
+		Month = now->tm_mon + 1;
+		Day = now->tm_mday;
 
 		return clsDate(Day, Month, Year);
 	}
 
+	static	bool IsValidDate(clsDate Date)
+	{
 
-	static bool isLeapYear(clsDate Date) {
-		return (Date.Year % 4 == 0 && Date.Year % 100 != 0 || Date.Year % 400 == 0) ? true : false;
-	}
-
-	bool isLeapYear() {
-		return isLeapYear(*this);
-	}
-	static bool isValidDate(clsDate Date) {
-		if ((Date.Year < 0) || (Date.Month > 12 || Date.Month < 1) || (Date.Day < 1 || Date.Day > 31))
+		if (Date.Day < 1 || Date.Day>31)
 			return false;
+
+		if (Date.Month < 1 || Date.Month>12)
+			return false;
+
 		if (Date.Month == 2)
-			return (isLeapYear(Date) && Date.Day != 29) ? false : (!isLeapYear(Date) && Date.Day != 28) ? false : true;
+		{
+			if (isLeapYear(Date.Year))
+			{
+				if (Date.Day > 29)
+					return false;
+			}
+			else
+			{
+				if (Date.Day > 28)
+					return false;
+			}
+		}
+
+		short DaysInMonth = NumberOfDaysInAMonth(Date.Month, Date.Year);
+
+		if (Date.Day > DaysInMonth)
+			return false;
+
+		return true;
+
 	}
 
-	bool isValidDate() {
-		return isValidDate(*this);
+	bool IsValid()
+	{
+		return IsValidDate(*this);
 	}
 
+	static string DateToString(clsDate Date)
+	{
+		return  to_string(Date.Day) + "/" + to_string(Date.Month) + "/" + to_string(Date.Year);
+	}
+
+	string DateToString()
+	{
+		return  DateToString(*this);
+	}
+
+	static bool isLeapYear(short Year)
+	{
+
+		// if year is divisible by 4 AND not divisible by 100
+	  // OR if year is divisible by 400
+	  // then it is a leap year
+		return (Year % 4 == 0 && Year % 100 != 0) || (Year % 400 == 0);
+	}
+
+	bool isLeapYear()
+	{
+		return isLeapYear(_Year);
+	}
+
+	static short NumberOfDaysInAYear(short Year)
+	{
+		return  isLeapYear(Year) ? 365 : 364;
+	}
+
+	short NumberOfDaysInAYear()
+	{
+		return  NumberOfDaysInAYear(_Year);
+	}
+
+	static short NumberOfHoursInAYear(short Year)
+	{
+		return  NumberOfDaysInAYear(Year) * 24;
+	}
+
+	short NumberOfHoursInAYear()
+	{
+		return  NumberOfHoursInAYear(_Year);
+	}
+
+	static int NumberOfMinutesInAYear(short Year)
+	{
+		return  NumberOfHoursInAYear(Year) * 60;
+	}
+
+	int NumberOfMinutesInAYear()
+	{
+		return  NumberOfMinutesInAYear(_Year);
+	}
+
+	static int NumberOfSecondsInAYear(short Year)
+	{
+		return  NumberOfMinutesInAYear(Year) * 60;
+	}
+
+	int NumberOfSecondsInAYear()
+	{
+		return  NumberOfSecondsInAYear();
+	}
 
 };
+
