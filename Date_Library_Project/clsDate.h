@@ -91,5 +91,16 @@ public:
 		return to_string(Date._Day) + "/" + to_string(Date._Month) + "/" + to_string(Date._Year);
 	}
 
+	static clsDate GetSystemDate() {
+		time_t t = time(0);
+		tm* Now = localtime(&t);
+
+		short Day, Month, Year;
+		Day = Now->tm_mday;
+		Month = Now->tm_mon + 1;
+		Year = Now->tm_year + 1900;
+
+		return clsDate(Day, Month, Year);
+	}
 
 };
