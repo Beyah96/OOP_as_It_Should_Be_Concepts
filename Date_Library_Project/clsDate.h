@@ -728,5 +728,16 @@ public:
 		IncreaseDateByOneDecade(*this);
 	}
 
+	clsDate IncreaseDateByXDecades(short Decade, clsDate& Date)
+	{
+		Date.Year += Decade * 10;
+		return Date;
+	}
+
+	void IncreaseDateByXDecades(short Decade)
+	{
+		IncreaseDateByXDecades(Decade, *this);
+	}
+
 };
 
