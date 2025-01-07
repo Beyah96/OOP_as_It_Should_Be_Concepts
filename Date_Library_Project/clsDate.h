@@ -1054,5 +1054,25 @@ public:
 		return CalculateBusinessDays(DateFrom, DateTo);
 	}
 
+	static clsDate CalculateVacationReturnDate(clsDate DateFrom, short VacationDays)
+	{
+
+		short WeekEndCounter = 0;
+
+		for (short i = 1; i <= VacationDays; i++)
+		{
+
+			if (IsWeekEnd(DateFrom))
+				WeekEndCounter++;
+
+			DateFrom = AddOneDay(DateFrom);
+		}
+		//to add weekends 
+		for (short i = 1; i <= WeekEndCounter; i++)
+			DateFrom = AddOneDay(DateFrom);
+
+		return DateFrom;
+	}
+
 };
 
